@@ -16,12 +16,12 @@ pipeline {
                     if [ -z "$checktag" ]
                     then
                         dockertag=latest
-                        docker build -t skyth1an/app:$dockertag .
+                        docker build -t skyth1an/myapp:$dockertag .
                         echo $dockercred_PSW | docker login -u $dockercred_USR --password-stdin
                         docker push skyth1an/myapp:$dockertag
                     else
                         dockertag=$(git tag --points-at ${GIT_COMMIT})
-                        docker build -t skyth1an/app:$dockertag .
+                        docker build -t skyth1an/myapp:$dockertag .
                         echo $dockercred_PSW | docker login -u $dockercred_USR --password-stdin
                         docker push skyth1an/myapp:$dockertag
                         git clone https://github.com/skYth1an/diplom_kuber.git
