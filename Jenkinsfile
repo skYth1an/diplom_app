@@ -8,6 +8,7 @@ pipeline {
             steps {
                 cleanWs()
                    }
+                }
         stage('Git Checkout') {
             steps {
             git branch: 'main', credentialsId: 'gitcred', url: 'git@github.com:skYth1an/diplom_app.git'
