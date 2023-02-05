@@ -4,6 +4,10 @@ pipeline {
 		dockercred=credentials('docker')
 	}
     stages {
+        stage('Clean') {
+            steps {
+                cleanWs()
+                   }
         stage('Git Checkout') {
             steps {
             git branch: 'main', credentialsId: 'gitcred', url: 'git@github.com:skYth1an/diplom_app.git'
