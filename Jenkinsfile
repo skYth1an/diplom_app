@@ -4,7 +4,7 @@ pipeline {
 		dockercred=credentials('docker')
 	}
     stages {
-        stage('Clean') {
+        stage('PreClean') {
             steps {
                 cleanWs()
                    }
