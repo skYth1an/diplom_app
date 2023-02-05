@@ -25,7 +25,8 @@ pipeline {
                         echo $dockercred_PSW | docker login -u $dockercred_USR --password-stdin
                         docker push skyth1an/myapp:$dockertag
                         git clone https://github.com/skYth1an/diplom_kuber.git
-                        sed -i 's/app: skyth1an\/myapp:.*/app: skyth1an\/myapp:$dockertag/' diplom_kuber/values.yaml
+                        sed -i 's!app: skyth1an/myapp:.*!app: skyth1an/myapp:$dockertag!' diplom_kuber/values.yaml
+
                         helm upgrade mon -n monitoring diplom_kuber/
                     fi
                     '''
